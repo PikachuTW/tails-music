@@ -4,10 +4,11 @@ import { AppService } from './app.service';
 import { DiscordService } from './discord/discord.service';
 import { SocketGateway } from './socket/socket.gateway';
 import { UserController } from './user/user.controller';
+import { DistubeService } from './distube/distube.service';
 
 @Module({
   imports: [],
   controllers: [AppController, UserController],
-  providers: [AppService, DiscordService, SocketGateway],
+  providers: [AppService, DiscordService, SocketGateway, DistubeService],
 })
 export class AppModule {}

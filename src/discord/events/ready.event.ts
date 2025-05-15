@@ -1,8 +1,8 @@
 import { Client } from 'discord.js';
-import Event from './event.class';
 import { Logger } from '@nestjs/common';
+import { IEvent } from './event.interface';
 
-export default class ReadyEvent extends Event {
+export default class ReadyEvent implements IEvent {
   private readonly logger = new Logger(ReadyEvent.name);
 
   execute(client: Client) {
