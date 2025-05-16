@@ -1,4 +1,4 @@
-import { Permission } from './permission.enum';
+import { Permission } from '../enum/permission.enum';
 
 const permissionLevels: Record<Permission, number> = {
     [Permission.ADMIN]: 4,
@@ -15,7 +15,6 @@ export function hasPermission(
     const requiredLevel = permissionLevels[requiredPermission];
 
     if (currentUserLevel === undefined || requiredLevel === undefined) {
-        // Handle unknown permissions, e.g., by denying access or logging an error
         console.error(`Unknown permission encountered: ${currentUserPermission} or ${requiredPermission}`);
         return false;
     }

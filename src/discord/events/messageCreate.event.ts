@@ -1,8 +1,8 @@
-import { IEvent } from './event.interface';
+import { IEvent } from '../../common/interface/event.interface';
 import { Client, Message } from 'discord.js';
 import { DiscordService } from '../discord.service';
-import { Permission } from '../commands/permission.enum';
-import { hasPermission } from '../commands/permission.utils';
+import { Permission } from '../../common/enum/permission.enum';
+import { hasPermission } from '../../common/utils/permission.utils';
 
 export default class MessageCreateEvent implements IEvent {
     constructor(private readonly discordService: DiscordService) { }
@@ -30,7 +30,7 @@ export default class MessageCreateEvent implements IEvent {
         }
 
         try {
-            await command.execute(client, message, args);
+            await command.execute(message, args);
         } catch (error) {
             console.error(`Error executing command ${commandName}:`, error);
             await message.reply('執行該指令時發生錯誤！');

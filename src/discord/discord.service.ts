@@ -3,20 +3,27 @@ import {
   Logger,
   OnModuleDestroy,
   OnModuleInit,
+  forwardRef,
+  Inject,
 } from '@nestjs/common';
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
-import { IEvent } from './events/event.interface';
-import { ICommand } from './commands/command.interface';
+import { IEvent, IEventOptions } from '../common/interface/event.interface';
+import { ICommand, ICommandOptions } from '../common/interface/command.interface';
+import { DistubeService } from '../distube/distube.service';
+import { ModuleRef } from '@nestjs/core';
 
 @Injectable()
 export class DiscordService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(DiscordService.name);
   public readonly client: Client;
   public readonly commands: Collection<string, ICommand>;
+  public readonly distubeService: DistubeService;
 
-  constructor() {
+  constructor(
+    private moduleRef: ModuleRef,
+  ) {
     this.client = new Client({
       intents: [
         GatewayIntentBits.Guilds,
@@ -26,6 +33,7 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
       ],
     });
     this.commands = new Collection<string, ICommand>();
+    this.distubeService = this.moduleRef.get(DistubeService, { strict: false });
   }
 
   async onModuleInit() {
@@ -63,8 +71,8 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
         try {
           const eventModule = await import(path.join(eventsFolderPath, file));
 
-          const EventClass = eventModule.default as new (discordService: DiscordService) => IEvent;
-          const newEvent = new EventClass(this);
+          const EventClass = eventModule.default as new ({ client, distubeService }: IEventOptions) => IEvent;
+          const newEvent = new EventClass({ client: this.client, distubeService: this.distubeService });
 
           this.client.on(eventName, (...args: unknown[]) => {
             void newEvent.execute(this.client, ...args);
@@ -93,8 +101,8 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
         const commandName = file.split('.')[0];
         try {
           const commandModule = await import(path.join(commandsFolderPath, file));
-          const CommandClass = commandModule.default as new () => ICommand;
-          const newCommand = new CommandClass();
+          const CommandClass = commandModule.default as new ({ client, distubeService }: ICommandOptions) => ICommand;
+          const newCommand = new CommandClass({ client: this.client, distubeService: this.distubeService });
 
           this.commands.set(commandName, newCommand);
           newCommand.aliases.forEach((alias) => {

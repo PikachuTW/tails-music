@@ -1,12 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, forwardRef, Inject } from '@nestjs/common';
 import { DisTube } from 'distube';
-import { DiscordService } from 'src/discord/discord.service';
+import { DiscordService } from '../discord/discord.service';
+import { ModuleRef } from '@nestjs/core';
 
 @Injectable()
 export class DistubeService {
-    private readonly distube: DisTube;
+    public distube: DisTube;
+    public discordService: DiscordService;
 
-    constructor(private readonly discordService: DiscordService) {
-        this.distube = new DisTube(discordService.client);
+    constructor(private moduleRef: ModuleRef) {
+        this.discordService = this.moduleRef.get(DiscordService, { strict: false });
+    }
+
+    async onModuleInit() {
+        this.distube = new DisTube(this.discordService.client);
     }
 }
