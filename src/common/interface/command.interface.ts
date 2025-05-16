@@ -1,6 +1,7 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 import { Permission } from '../enum/permission.enum';
-import { DistubeService } from 'src/distube/distube.service';
+import { DiscordService } from '../../discord/discord.service';
+
 export interface ICommand {
     aliases: string[];
     description: string;
@@ -10,6 +11,5 @@ export interface ICommand {
 }
 
 export interface ICommandOptions {
-    client: Client;
-    distubeService: DistubeService;
+    discordService: DiscordService;
 }

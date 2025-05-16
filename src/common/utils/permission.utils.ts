@@ -7,10 +7,15 @@ const permissionLevels: Record<Permission, number> = {
     [Permission.BANNED]: 1,
 };
 
-export function hasPermission(
-    currentUserPermission: Permission,
-    requiredPermission: Permission,
-): boolean {
+export interface HasPermissionParams {
+    currentUserPermission: Permission;
+    requiredPermission: Permission;
+}
+
+export function hasPermission({
+    currentUserPermission,
+    requiredPermission,
+}: HasPermissionParams): boolean {
     const currentUserLevel = permissionLevels[currentUserPermission];
     const requiredLevel = permissionLevels[requiredPermission];
 

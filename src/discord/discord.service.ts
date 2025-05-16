@@ -3,26 +3,24 @@ import {
   Logger,
   OnModuleDestroy,
   OnModuleInit,
-  forwardRef,
-  Inject,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { Client, GatewayIntentBits, Collection } from 'discord.js';
 import * as path from 'node:path';
 import * as fs from 'node:fs/promises';
-import { IEvent, IEventOptions } from '../common/interface/event.interface';
 import { ICommand, ICommandOptions } from '../common/interface/command.interface';
-import { DistubeService } from '../distube/distube.service';
-import { ModuleRef } from '@nestjs/core';
+import { DisTube } from 'distube';
+import { YouTubePlugin } from '@distube/youtube';
 
 @Injectable()
 export class DiscordService implements OnModuleInit, OnModuleDestroy {
-  private readonly logger = new Logger(DiscordService.name);
+  public readonly logger = new Logger(DiscordService.name);
   public readonly client: Client;
   public readonly commands: Collection<string, ICommand>;
-  public readonly distubeService: DistubeService;
+  public readonly distube: DisTube;
 
   constructor(
-    private moduleRef: ModuleRef,
+    private readonly configService: ConfigService,
   ) {
     this.client = new Client({
       intents: [
@@ -33,11 +31,18 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
       ],
     });
     this.commands = new Collection<string, ICommand>();
-    this.distubeService = this.moduleRef.get(DistubeService, { strict: false });
+    this.distube = new DisTube(this.client, {
+      plugins: [
+        new YouTubePlugin({
+          ytdlOptions: {
+          }
+        })
+      ],
+    });
   }
 
   async onModuleInit() {
-    const token = process.env.DISCORD_TOKEN;
+    const token = this.configService.get<string>('DISCORD_TOKEN');
     if (!token) {
       throw new Error('DISCORD_TOKEN in env is required');
     }
@@ -49,8 +54,8 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
       throw err;
     }
 
-    await this.loadEvents();
     await this.loadCommands();
+    await this.loadEvents();
   }
 
   async onModuleDestroy() {
@@ -70,14 +75,14 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
         const eventName = file.split('.')[0];
         try {
           const eventModule = await import(path.join(eventsFolderPath, file));
+          const loadFunction = eventModule.default;
 
-          const EventClass = eventModule.default as new ({ client, distubeService }: IEventOptions) => IEvent;
-          const newEvent = new EventClass({ client: this.client, distubeService: this.distubeService });
-
-          this.client.on(eventName, (...args: unknown[]) => {
-            void newEvent.execute(this.client, ...args);
-          });
-          this.logger.log(`Successfully loaded event: ${eventName}`);
+          if (typeof loadFunction === 'function') {
+            loadFunction({ discordService: this });
+            this.logger.log(`Successfully loaded event: ${eventName}`);
+          } else {
+            this.logger.error(`Failed to load event ${eventName} from ${file}: Invalid event class or missing execute method.`);
+          }
         } catch (error) {
           this.logger.error(
             `Failed to load event ${eventName} from ${file}: ${error}`,
@@ -101,8 +106,8 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
         const commandName = file.split('.')[0];
         try {
           const commandModule = await import(path.join(commandsFolderPath, file));
-          const CommandClass = commandModule.default as new ({ client, distubeService }: ICommandOptions) => ICommand;
-          const newCommand = new CommandClass({ client: this.client, distubeService: this.distubeService });
+          const CommandClass = commandModule.default as new ({ discordService }: ICommandOptions) => ICommand;
+          const newCommand = new CommandClass({ discordService: this });
 
           this.commands.set(commandName, newCommand);
           newCommand.aliases.forEach((alias) => {

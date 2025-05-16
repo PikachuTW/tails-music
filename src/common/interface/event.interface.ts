@@ -1,11 +1,7 @@
-import { Client } from 'discord.js';
-import { DistubeService } from 'src/distube/distube.service';
-
-export interface IEvent {
-  execute(...args: any[]): void | Promise<void>;
-}
+import { DiscordService } from '../../discord/discord.service';
 
 export interface IEventOptions {
-  client: Client;
-  distubeService: DistubeService;
+  discordService: DiscordService;
+
 }
+

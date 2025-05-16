@@ -1,9 +1,16 @@
 import { Client, Message } from 'discord.js';
-import { ICommand } from '../../common/interface/command.interface';
+import { ICommand, ICommandOptions } from '../../common/interface/command.interface';
 import { Permission } from '../../common/enum/permission.enum';
-import { DistubeService } from 'src/distube/distube.service';
+import { DisTube } from 'distube';
+
 export default class PingCommand implements ICommand {
-    constructor(private readonly client: Client) {}
+    private readonly client: Client;
+    private readonly distube: DisTube;
+
+    constructor({ discordService: { client, distube } }: ICommandOptions) {
+        this.client = client;
+        this.distube = distube; 
+    }
     aliases: string[] = [];
     description: string = 'Get the latency of the bot';
     permission: Permission = Permission.USER;

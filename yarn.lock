@@ -601,6 +601,52 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@distube/youtube@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@distube/youtube@npm:1.0.4"
+  dependencies:
+    "@distube/ytdl-core": "npm:^4.14.2"
+    "@distube/ytpl": "npm:^1.2.1"
+    "@distube/ytsr": "npm:^2.0.4"
+  peerDependencies:
+    distube: 5
+  checksum: 10c0/54daa9e97a021a1519458373fba04787777f7f5712a64b1780c7338c03181d1ebd314ed951ff4155caa64fc90c9801b16deb2aaa60d648ec79bdbd7416eb8c01
+  languageName: node
+  linkType: hard
+
+"@distube/ytdl-core@npm:^4.14.2":
+  version: 4.16.10
+  resolution: "@distube/ytdl-core@npm:4.16.10"
+  dependencies:
+    http-cookie-agent: "npm:^7.0.1"
+    https-proxy-agent: "npm:^7.0.6"
+    m3u8stream: "npm:^0.8.6"
+    miniget: "npm:^4.2.3"
+    sax: "npm:^1.4.1"
+    tough-cookie: "npm:^5.1.2"
+    undici: "npm:^7.8.0"
+  checksum: 10c0/b43690dada836d2679bfe40f92e82afbfe241da61b24dd24ae2e5053e18510433a81dd139a115bcd05a7b82c2875543451e2bd2e12f1769110f35f7cc405cb2e
+  languageName: node
+  linkType: hard
+
+"@distube/ytpl@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@distube/ytpl@npm:1.2.1"
+  dependencies:
+    undici: "npm:^5.25.2"
+  checksum: 10c0/f1ee21c2ab10ea741fc51c86a6a761d55d2bceed0d26393a981a8158933f32efc3682a589842e6252995cd1b0b5e48f5c894b44c9c72bc89f0f74cb7242d0423
+  languageName: node
+  linkType: hard
+
+"@distube/ytsr@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@distube/ytsr@npm:2.0.4"
+  dependencies:
+    undici: "npm:^6.18.2"
+  checksum: 10c0/a27e82e9d1564411c23ca11033451f456d290cdfe12dc740ff26ed6eed65c1945f865eb920cc4c297272b58e84aecc5d3f18d02bcaa124f0f69ac8be93501492
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.7.0":
   version: 4.7.0
   resolution: "@eslint-community/eslint-utils@npm:4.7.0"
@@ -684,6 +730,13 @@ __metadata:
     "@eslint/core": "npm:^0.13.0"
     levn: "npm:^0.4.1"
   checksum: 10c0/554847c8f2b6bfe0e634f317fc43d0b54771eea0015c4f844f75915fdb9e6170c830c004291bad57db949d61771732e459f36ed059f45cf750af223f77357c5c
+  languageName: node
+  linkType: hard
+
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "@fastify/busboy@npm:2.1.1"
+  checksum: 10c0/6f8027a8cba7f8f7b736718b013f5a38c0476eea67034c94a0d3c375e2b114366ad4419e6a6fa7ffc2ef9c6d3e0435d76dd584a7a1cbac23962fda7650b579e3
   languageName: node
   linkType: hard
 
@@ -1559,6 +1612,20 @@ __metadata:
     class-validator:
       optional: true
   checksum: 10c0/e619a9795fc0c771eafb83fc9ddecfa61d3b36ddd57a4b4bab9aef47981a16cecd4de758e82303b4adfc9cbd1df9d598f501b5101982fe3f73cd2758278ec502
+  languageName: node
+  linkType: hard
+
+"@nestjs/config@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@nestjs/config@npm:4.0.2"
+  dependencies:
+    dotenv: "npm:16.4.7"
+    dotenv-expand: "npm:12.0.1"
+    lodash: "npm:4.17.21"
+  peerDependencies:
+    "@nestjs/common": ^10.0.0 || ^11.0.0
+    rxjs: ^7.1.0
+  checksum: 10c0/549bc8d784f68742c8020954be250639cd8d37a0dd233d01ebe511f67268e5fd109ffb1ae546ca9792a8484ef4cbb79374ae7e2a9587f59b13db1e9a16d443d6
   languageName: node
   linkType: hard
 
@@ -2837,7 +2904,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"agent-base@npm:^7.1.0, agent-base@npm:^7.1.2":
+"agent-base@npm:^7.1.0, agent-base@npm:^7.1.2, agent-base@npm:^7.1.3":
   version: 7.1.3
   resolution: "agent-base@npm:7.1.3"
   checksum: 10c0/6192b580c5b1d8fb399b9c62bf8343d76654c2dd62afcb9a52b2cf44a8b6ace1e3b704d3fe3547d91555c857d3df02603341ff2cb961b9cfe2b12f9f3c38ee11
@@ -4001,7 +4068,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.5.0":
+"dotenv-expand@npm:12.0.1":
+  version: 12.0.1
+  resolution: "dotenv-expand@npm:12.0.1"
+  dependencies:
+    dotenv: "npm:^16.4.5"
+  checksum: 10c0/51996bfa670073d7a441b8fbed26ac991026fba2c05e9a937a898ce7d2a2e7166f7b6ec4eb8879e576defb5d1ad399ed1300db8f803d6977577fea55b4d82dac
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:16.4.7":
+  version: 16.4.7
+  resolution: "dotenv@npm:16.4.7"
+  checksum: 10c0/be9f597e36a8daf834452daa1f4cc30e5375a5968f98f46d89b16b983c567398a330580c88395069a77473943c06b877d1ca25b4afafcdd6d4adb549e8293462
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.4.5":
   version: 16.5.0
   resolution: "dotenv@npm:16.5.0"
   checksum: 10c0/5bc94c919fbd955bf0ba44d33922a1e93d1078e64a1db5c30faeded1d996e7a83c55332cb8ea4fae5a9ca4d0be44cbceb95c5811e70f9f095298df09d1997dd9
@@ -5187,6 +5270,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-cookie-agent@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "http-cookie-agent@npm:7.0.1"
+  dependencies:
+    agent-base: "npm:^7.1.3"
+  peerDependencies:
+    tough-cookie: ^4.0.0 || ^5.0.0
+    undici: ^7.0.0
+  peerDependenciesMeta:
+    undici:
+      optional: true
+  checksum: 10c0/d89b44247a00a38891ffd8398b5ba57e891cd8ac638eff57d2b11cbff525dad207f3058dbfff9d19678e646c891252195f90ef8f61e7ddcfbfae6a1b97b2be5e
+  languageName: node
+  linkType: hard
+
 "http-errors@npm:2.0.0, http-errors@npm:^2.0.0":
   version: 2.0.0
   resolution: "http-errors@npm:2.0.0"
@@ -5230,7 +5328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"https-proxy-agent@npm:^7.0.1":
+"https-proxy-agent@npm:^7.0.1, https-proxy-agent@npm:^7.0.6":
   version: 7.0.6
   resolution: "https-proxy-agent@npm:7.0.6"
   dependencies:
@@ -6249,7 +6347,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21":
+"lodash@npm:4.17.21, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: 10c0/d8cbea072bb08655bb4c989da418994b073a608dffa608b09ac04b43a791b12aeae7cd7ad919aa4c925f33b48490b5cfe6c1f71d827956071dae2e7bb3a6b74c
@@ -6293,6 +6391,16 @@ __metadata:
   dependencies:
     yallist: "npm:^3.0.2"
   checksum: 10c0/89b2ef2ef45f543011e38737b8a8622a2f8998cddf0e5437174ef8f1f70a8b9d14a918ab3e232cb3ba343b7abddffa667f0b59075b2b80e6b4d63c3de6127482
+  languageName: node
+  linkType: hard
+
+"m3u8stream@npm:^0.8.6":
+  version: 0.8.6
+  resolution: "m3u8stream@npm:0.8.6"
+  dependencies:
+    miniget: "npm:^4.2.2"
+    sax: "npm:^1.2.4"
+  checksum: 10c0/1c3b8912104ebf0f8f3b38e3c889368b7b9993468aa1f52911bec7aaf7b8683b308e6cf2ca3a6baabd3c98d3da712257ce8ab4e24557f662f471459ea7c70b00
   languageName: node
   linkType: hard
 
@@ -6492,6 +6600,13 @@ __metadata:
   version: 4.0.0
   resolution: "mimic-response@npm:4.0.0"
   checksum: 10c0/761d788d2668ae9292c489605ffd4fad220f442fbae6832adce5ebad086d691e906a6d5240c290293c7a11e99fbdbbef04abbbed498bf8699a4ee0f31315e3fb
+  languageName: node
+  linkType: hard
+
+"miniget@npm:^4.2.2, miniget@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "miniget@npm:4.2.3"
+  checksum: 10c0/b580a9a56d3299d96077e2dd00a5db51a47c7d3809b793e546b1cd63befc44103c5a819e0aef53041045322c03f371fb4e991df5888a5db5a6f22df024803150
   languageName: node
   linkType: hard
 
@@ -7573,6 +7688,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sax@npm:^1.2.4, sax@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "sax@npm:1.4.1"
+  checksum: 10c0/6bf86318a254c5d898ede6bd3ded15daf68ae08a5495a2739564eb265cd13bcc64a07ab466fb204f67ce472bb534eb8612dac587435515169593f4fffa11de7c
+  languageName: node
+  linkType: hard
+
 "schema-utils@npm:^3.1.1":
   version: 3.3.0
   resolution: "schema-utils@npm:3.3.0"
@@ -8164,10 +8286,12 @@ __metadata:
   dependencies:
     "@discordjs/opus": "npm:^0.10.0"
     "@discordjs/voice": "npm:^0.18.0"
+    "@distube/youtube": "npm:^1.0.4"
     "@eslint/eslintrc": "npm:^3.3.1"
     "@eslint/js": "npm:^9.26.0"
     "@nestjs/cli": "npm:^11.0.7"
     "@nestjs/common": "npm:^11.1.1"
+    "@nestjs/config": "npm:^4.0.2"
     "@nestjs/core": "npm:^11.1.1"
     "@nestjs/platform-express": "npm:^11.1.1"
     "@nestjs/platform-socket.io": "npm:^11.1.1"
@@ -8185,7 +8309,6 @@ __metadata:
     class-validator: "npm:^0.14.2"
     discord.js: "npm:^14.19.3"
     distube: "npm:^5.0.7"
-    dotenv: "npm:^16.5.0"
     eslint: "npm:^9.26.0"
     eslint-config-prettier: "npm:^10.1.5"
     eslint-plugin-prettier: "npm:^5.4.0"
@@ -8331,6 +8454,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tldts-core@npm:^6.1.86":
+  version: 6.1.86
+  resolution: "tldts-core@npm:6.1.86"
+  checksum: 10c0/8133c29375f3f99f88fce5f4d62f6ecb9532b106f31e5423b27c1eb1b6e711bd41875184a456819ceaed5c8b94f43911b1ad57e25c6eb86e1fc201228ff7e2af
+  languageName: node
+  linkType: hard
+
+"tldts@npm:^6.1.32":
+  version: 6.1.86
+  resolution: "tldts@npm:6.1.86"
+  dependencies:
+    tldts-core: "npm:^6.1.86"
+  bin:
+    tldts: bin/cli.js
+  checksum: 10c0/27ae7526d9d78cb97b2de3f4d102e0b4321d1ccff0648a7bb0e039ed54acbce86bacdcd9cd3c14310e519b457854e7bafbef1f529f58a1e217a737ced63f0940
+  languageName: node
+  linkType: hard
+
 "tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -8370,6 +8511,15 @@ __metadata:
     "@tokenizer/token": "npm:^0.3.0"
     ieee754: "npm:^1.2.1"
   checksum: 10c0/5bf5eba51d63f71f301659ff70ce10ca43e7038364883437d8b4541cc98377e3e56109b11720e25fe51047014efaccdff90eaf6de9a78270483578814b838ab9
+  languageName: node
+  linkType: hard
+
+"tough-cookie@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "tough-cookie@npm:5.1.2"
+  dependencies:
+    tldts: "npm:^6.1.32"
+  checksum: 10c0/5f95023a47de0f30a902bba951664b359725597d8adeabc66a0b93a931c3af801e1e697dae4b8c21a012056c0ea88bd2bf4dfe66b2adcf8e2f42cd9796fe0626
   languageName: node
   linkType: hard
 
@@ -8679,7 +8829,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.7.0":
+"undici@npm:^5.25.2":
+  version: 5.29.0
+  resolution: "undici@npm:5.29.0"
+  dependencies:
+    "@fastify/busboy": "npm:^2.0.0"
+  checksum: 10c0/e4e4d631ca54ee0ad82d2e90e7798fa00a106e27e6c880687e445cc2f13b4bc87c5eba2a88c266c3eecffb18f26e227b778412da74a23acc374fca7caccec49b
+  languageName: node
+  linkType: hard
+
+"undici@npm:^6.18.2":
+  version: 6.21.3
+  resolution: "undici@npm:6.21.3"
+  checksum: 10c0/294da109853fad7a6ef5a172ad0ca3fb3f1f60cf34703d062a5ec967daf69ad8c03b52e6d536c5cba3bb65615769bf08e5b30798915cbccdddaca01045173dda
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.7.0, undici@npm:^7.8.0":
   version: 7.9.0
   resolution: "undici@npm:7.9.0"
   checksum: 10c0/d024e1e4930e7bae47376824dfe82f736d59b4ddd1750ceb54fa842c955c75796df29322bf09632c4a6fb07cee9850cadc3d2d1c337bc41ef784a34449c86d04

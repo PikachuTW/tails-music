@@ -1,11 +1,8 @@
-import { Client } from 'discord.js';
-import { Logger } from '@nestjs/common';
-import { IEvent } from '../../common/interface/event.interface';
+import { Events } from 'discord.js';
+import { IEventOptions } from '../../common/interface/event.interface';
 
-export default class ReadyEvent implements IEvent {
-  private readonly logger = new Logger(ReadyEvent.name);
-
-  execute(client: Client) {
-    this.logger.log(`Logged in as ${client.user?.tag}`);
-  }
+export default ({ discordService: { client, logger } }: IEventOptions) => {
+  client.on(Events.ClientReady, (client) => {
+    logger.log(`Logged in as ${client.user?.tag}`);
+  });
 }
