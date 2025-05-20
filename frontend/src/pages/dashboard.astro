@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavbarComponent from '../components/dashboard/navbar';
+import MenuComponent from '../components/dashboard/menu';
+import FooterComponent from '../components/dashboard/footer';
+import SearchComponent from '../components/dashboard/search';
+---
+
+<Layout>
+    <div class="flex flex-col h-screen">
+        <NavbarComponent />
+        <div class="flex flex-1 min-h-0">
+            <MenuComponent client:load />
+            <SearchComponent />
+        </div>
+        <FooterComponent />
+    </div>
+</Layout>

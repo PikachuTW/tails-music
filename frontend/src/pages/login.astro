@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro"; // Corrected path
+import LoginManager from "../components/login/LoginManager.tsx"; // Corrected path
+
+if (Astro.cookies.has("logined")) {
+  return Astro.redirect("/dashboard");
+}
+---
+
+<Layout>
+  <div
+    class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-base-200 to-base-300"
+  >
+    <LoginManager client:load />
+    <div class="mt-4 text-sm text-base-content/70">
+      <p>Tails Music - 讓您的音樂體驗更美好</p>
+    </div>
+  </div>
+</Layout>
+

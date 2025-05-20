@@ -1,8 +1,7 @@
-# Compiled output
-dist/
-node_modules/
-build/
-.astro/
+# compiled output
+/dist
+/node_modules
+/build
 
 # Logs
 logs
@@ -17,11 +16,11 @@ lerna-debug.log*
 .DS_Store
 
 # Tests
-coverage/
-.nyc_output/
+/coverage
+/.nyc_output
 
 # IDEs and editors
-.idea/
+/.idea
 .project
 .classpath
 .c9/
@@ -36,15 +35,14 @@ coverage/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# Environment variables
+# dotenv environment variable files
 .env
 .env.development.local
 .env.test.local
 .env.production.local
 .env.local
-.env.production
 
-# Temp directory
+# temp directory
 .temp
 .tmp
 
@@ -54,14 +52,14 @@ pids
 *.seed
 *.pid.lock
 
-# Diagnostic reports
+# Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# Yarn
+# Custom
 .yarn/*
 !.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
-!.yarn/versions 
+!.yarn/versions

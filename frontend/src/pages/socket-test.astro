@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SocketTestComponent from "../components/login/socket-test";
+---
+
+<Layout>
+  <main class="p-4">
+    <h1 class="text-3xl font-bold mb-6">Socket.IO 連接測試</h1>
+    <SocketTestComponent client:load />
+  </main>
+</Layout> 
