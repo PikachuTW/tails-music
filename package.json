@@ -7,14 +7,22 @@
     "backend"
   ],
   "scripts": {
-    "frontend:dev": "yarn workspace frontend dev",
-    "frontend:build": "yarn workspace frontend build",
-    "backend:dev": "yarn workspace backend start:dev",
-    "backend:build": "yarn workspace backend build",
+    "frontend:dev": "yarn workspace @tails-music/frontend dev",
+    "frontend:build": "yarn workspace @tails-music/frontend build",
+    "backend:dev": "yarn workspace @tails-music/backend start:dev",
+    "backend:build": "yarn workspace @tails-music/backend build",
     "dev": "concurrently \"yarn frontend:dev\" \"yarn backend:dev\"",
-    "build": "yarn frontend:build && yarn backend:build"
+    "build": "yarn frontend:build && yarn backend:build",
+    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
+    "format": "prettier --write \"**/*.{js,ts,tsx,json,md}\""
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
-  }
-} 
+    "concurrently": "^8.2.2",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.9.0-dev.20250520"
+  },
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
+}

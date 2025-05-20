@@ -1,5 +1,5 @@
 {
-  "name": "tails-music-frontend",
+  "name": "@tails-music/frontend",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -26,14 +26,6 @@
   },
   "packageManager": "yarn@4.9.1",
   "devDependencies": {
-    "daisyui": "^5.0.35",
-    "msw": "^2.8.2",
-    "prettier": "^3.5.3",
-    "typescript": "^5.9.0-dev.20250517"
-  },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
+    "daisyui": "^5.0.35"
   }
 }
